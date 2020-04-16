@@ -1,0 +1,23 @@
+#pygame moudle to play audio
+from pygame import mixer
+from time import time
+def musicloop(file,stopper):
+    mixer.init()
+    mixer.music.load("water.ogg")
+    mixer.music.play()
+    while True:
+        a = input()
+        if a == stopper:
+            mixer.music.stop()
+            break
+
+if __name__ == "__main__":
+    # musicloop("water.ogg","stop")
+    init_water = time()
+    watersecs = 40*60
+
+    while True:
+        if time() - init_water > watersecs:
+            print("water drinking time. enter 'drank' to stop alarm.")
+            musicloop("water.ogg", "drank")
+            init_water = time()
